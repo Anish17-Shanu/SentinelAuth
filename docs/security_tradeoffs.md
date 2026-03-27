@@ -1,6 +1,6 @@
 # Security Trade-offs
 
-Documentation for SentinelAuth by **ANISH KUMAR**.
+Documentation for SentinelAuth by **Anish Kumar**.
 
 - JWT access tokens remain stateless for scale, but revocation requires a distributed store lookup for every request.
 - Rich authorization claims reduce policy round-trips, but increase token sensitivity and require shorter TTLs.

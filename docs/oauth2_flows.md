@@ -1,6 +1,6 @@
 # OAuth2 Flow Diagrams
 
-Documentation for SentinelAuth by **ANISH KUMAR**.
+Documentation for SentinelAuth by **Anish Kumar**.
 
 ## Authorization Code + PKCE
 

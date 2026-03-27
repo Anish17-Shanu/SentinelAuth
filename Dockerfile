@@ -1,7 +1,7 @@
 FROM python:3.12-slim
 
 LABEL org.opencontainers.image.title="SentinelAuth"
-LABEL org.opencontainers.image.authors="ANISH KUMAR"
+LABEL org.opencontainers.image.authors="Anish Kumar"
 
 WORKDIR /app
 

@@ -1,6 +1,6 @@
 # Token Lifecycle
 
-Documentation for SentinelAuth by **ANISH KUMAR**.
+Documentation for SentinelAuth by **Anish Kumar**.
 
 ## Access token
 

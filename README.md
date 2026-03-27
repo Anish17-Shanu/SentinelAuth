@@ -2,7 +2,7 @@
 
 ## Creator
 
-This project was created and is maintained by **ANISH KUMAR**.
+This project was created and is maintained by **Anish Kumar**.
 
 SentinelAuth is a production-style Zero Trust authentication and authorization platform implemented as a set of Python microservices. It includes:
 
