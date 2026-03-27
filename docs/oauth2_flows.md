@@ -1,5 +1,7 @@
 # OAuth2 Flow Diagrams
 
+Documentation for SentinelAuth by **ANISH KUMAR**.
+
 ## Authorization Code + PKCE
 
 ```mermaid

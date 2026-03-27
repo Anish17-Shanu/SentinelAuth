@@ -1,5 +1,7 @@
 # Threat Model
 
+Documentation for SentinelAuth by **ANISH KUMAR**.
+
 ## Token theft
 
 - Mitigations:

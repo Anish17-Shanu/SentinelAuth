@@ -1,5 +1,7 @@
 # Token Lifecycle
 
+Documentation for SentinelAuth by **ANISH KUMAR**.
+
 ## Access token
 
 - Issued by the auth server as an RSA-signed JWT.
