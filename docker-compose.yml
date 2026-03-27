@@ -1,0 +1,77 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    ports:
+      - "6379:6379"
+
+  auth-server:
+    build: .
+    command: ["uvicorn", "services.auth_server.app:app", "--host", "0.0.0.0", "--port", "8000"]
+    env_file:
+      - .env
+    environment:
+      SENTINELAUTH_REDIS_URL: redis://redis:6379/0
+      SENTINELAUTH_SERVICE_NAME: auth-server
+    depends_on:
+      - redis
+    ports:
+      - "8000:8000"
+
+  user-service:
+    build: .
+    command: ["uvicorn", "services.user_service.app:app", "--host", "0.0.0.0", "--port", "8001"]
+    env_file:
+      - .env
+    environment:
+      SENTINELAUTH_REDIS_URL: redis://redis:6379/0
+      SENTINELAUTH_SERVICE_NAME: user-service
+    depends_on:
+      - redis
+    ports:
+      - "8001:8001"
+
+  policy-engine:
+    build: .
+    command: ["uvicorn", "services.policy_engine.app:app", "--host", "0.0.0.0", "--port", "8002"]
+    env_file:
+      - .env
+    environment:
+      SENTINELAUTH_REDIS_URL: redis://redis:6379/0
+      SENTINELAUTH_SERVICE_NAME: policy-engine
+    depends_on:
+      - redis
+    ports:
+      - "8002:8002"
+
+  audit-service:
+    build: .
+    command: ["uvicorn", "services.audit_service.app:app", "--host", "0.0.0.0", "--port", "8003"]
+    env_file:
+      - .env
+    environment:
+      SENTINELAUTH_REDIS_URL: redis://redis:6379/0
+      SENTINELAUTH_SERVICE_NAME: audit-service
+    depends_on:
+      - redis
+    ports:
+      - "8003:8003"
+
+  api-gateway:
+    build: .
+    command: ["uvicorn", "services.api_gateway.app:app", "--host", "0.0.0.0", "--port", "8004"]
+    env_file:
+      - .env
+    environment:
+      SENTINELAUTH_REDIS_URL: redis://redis:6379/0
+      SENTINELAUTH_SERVICE_NAME: api-gateway
+    depends_on:
+      - redis
+      - auth-server
+      - user-service
+      - policy-engine
+      - audit-service
+    ports:
+      - "8004:8004"
